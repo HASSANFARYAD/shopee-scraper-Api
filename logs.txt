@@ -15,3 +15,17 @@
 [2025-03-22T09:14:09.730Z] Server running on port 3005
 [2025-03-22T09:14:16.959Z] Received request: storeId=178926468, dealId=21448123549
 [2025-03-22T09:14:45.792Z] Error fetching Shopee data: All proxy attempts failed.
+[2025-03-22T13:13:45.447Z] Server running on port 3005
+[2025-03-22T13:14:05.840Z] Server running on port 3005
+[2025-03-22T13:15:30.055Z] Server running on port 3005
+[2025-03-22T13:15:37.608Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T13:15:43.139Z] Shopee Puppeteer Error: net::ERR_TUNNEL_CONNECTION_FAILED at https://shopee.tw/api/v4/pdp/get_pc?shopid=178926468&itemid=21448123549
+[2025-03-22T13:15:43.140Z] Error fetching Shopee data: Failed to scrape Shopee (Blocked or Error)
+[2025-03-22T13:22:46.003Z] Server running on port 3005
+[2025-03-22T13:22:54.950Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T13:22:57.323Z] Shopee Puppeteer Error: net::ERR_NO_SUPPORTED_PROXIES at https://shopee.tw/api/v4/pdp/get_pc?shopid=178926468&itemid=21448123549
+[2025-03-22T13:22:57.324Z] Error fetching Shopee data: Failed to scrape Shopee (Blocked or Error)
+[2025-03-22T13:24:42.518Z] Server running on port 3005
+[2025-03-22T13:24:51.789Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T13:24:53.657Z] Shopee Puppeteer Error: net::ERR_NO_SUPPORTED_PROXIES at https://shopee.tw/api/v4/pdp/get_rw?shopid=178926468&itemid=21448123549
+[2025-03-22T13:24:53.658Z] Error fetching Shopee data: Failed to scrape Shopee (Blocked or Error)

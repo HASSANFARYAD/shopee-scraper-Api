@@ -1,140 +1,144 @@
-# 🛍️ Shopee Scraper API
+# Shopee Scraper API
 
-## 📦 Installation & Setup
+## 🚀 Introduction
 
-### **1️⃣ Clone the Repository**
+This project is a **Shopee Scraper API** built using **Node.js, Puppeteer, and Bright Data proxies**. It retrieves product details from **Shopee Taiwan** while bypassing anti-scraping mechanisms using headless browsing, user-agent rotation, and proxy tunneling.
+
+## 📌 Features
+
+- ✅ **Uses Puppeteer Stealth Mode** to avoid detection.
+- ✅ **Bright Data Proxy Integration** for anonymous requests.
+- ✅ **Proxy Rotation** to prevent IP blocking.
+- ✅ **Rate Limiting** to prevent abuse.
+- ✅ **Caching** to reduce redundant requests.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Node.js** (Server)
+- **Express.js** (REST API)
+- **Puppeteer** (Headless browser)
+- **Bright Data** (Proxy service)
+- **Node-Cache** (Caching)
+
+---
+
+## 📥 Installation
+
+### 1️⃣ **Clone the repository**
 
 ```sh
-git clone https://github.com/your-username/shopee-scraper.git
-cd shopee-scraper
+git clone https://github.com/YOUR_USERNAME/shopee-scraper-api.git
+cd shopee-scraper-api
 ```
 
-### **2️⃣ Install Dependencies**
+### 2️⃣ **Install dependencies**
 
 ```sh
 npm install
 ```
 
-### **3️⃣ Configure Bright Data Proxies**
+### 3️⃣ **Set up your Bright Data Proxy**
 
-1. **Sign up at Bright Data** → [https://brightdata.com/](https://brightdata.com/)
-2. **Create a new Proxy Zone** (e.g., Residential Zone).
-3. **Find your access details**:
-   - **Username:** `lum-customer-XXXXXX`
-   - **zone:** `zone-ZONENAME`
-   - **Password:** Your Bright Data password
+Edit the `server.js` file and update the proxy credentials:
 
-```js
+```javascript
 const brightDataProxy = {
   host: "brd.superproxy.io",
-  port: 33335, // Try 80, 443, or 22225 if needed
-  auth: {
-    username: "lum-customer-XXXXXX-zone-ZONENAME",
-    password: "YOUR_PASSWORD",
-  },
+  port: 22225, // Correct Port
+  username: "YOUR_USERNAME",
+  password: "YOUR_PASSWORD",
 };
 ```
 
-### **4️⃣ Run the Server**
+### 4️⃣ **Run the server**
 
 ```sh
-node index.js
+node server.js
 ```
 
 ---
 
-## 📌 API Usage
+## 📡 API Endpoints
 
-### **1️⃣ Fetch Product Data**
+### **1️⃣ Fetch Shopee Product Data**
+
+#### 🔗 **Endpoint:**
 
 ```sh
-GET http://localhost:3005/shopee?storeId=178926468&dealId=21448123549
+GET /shopee?storeId=178926468&dealId=21448123549
 ```
 
-**Response (Success)**
+#### 🔍 **Example Response:**
 
 ```json
 {
-  "success": true,
-  "data": {
-    "item": {
-      "item_id": 18904813090,
-      "shop_id": 3543467,
-      "title": "Shopee Product Name",
-      "price": 7500000,
-      "brand": "Brand Name",
-      "shop_location": "Taipei"
-    }
-  }
+  "itemid": 21448123549,
+  "shopid": 178926468,
+  "name": "Product Name",
+  "price": 1500,
+  "stock": 25
 }
 ```
 
-**Response (Error)**
+### **2️⃣ Health Check**
 
-```json
-{
-  "error": "Failed to retrieve data"
-}
-```
-
----
-
-### **2️⃣ Check API Health**
+#### 🔗 **Endpoint:**
 
 ```sh
-GET http://localhost:3005/status
+GET /status
 ```
 
-**Response**
+#### 🔍 **Example Response:**
 
 ```json
 {
   "status": "OK",
-  "uptime": 234.5,
-  "cachedProxies": 5,
-  "timestamp": "2025-03-21T12:45:00Z"
+  "uptime": 1200,
+  "timestamp": "2025-03-22T12:00:00Z"
 }
 ```
 
 ---
 
-## ⚙️ **Configuration Options**
+## 🛡️ Security & Anti-Detection Measures
 
-| **Setting**      | **Description**                           |
-| ---------------- | ----------------------------------------- |
-| `PORT`           | API runs on port `3005` (can be changed)  |
-| `CACHE_TIME`     | Product data cached for `5 minutes`       |
-| `PROXY_ROTATION` | Uses **Bright Data** for rotating proxies |
-| `RATE_LIMIT`     | Allows **10 requests per minute**         |
+- **Puppeteer Stealth Plugin** (Hides bot fingerprints)
+- **User-Agent Rotation** (Simulates different browsers)
+- **Session Rotation** (Avoids bans from repeated requests)
+- **Proxy Tunneling** (Anonymous browsing)
 
 ---
 
-## 🔍 **Troubleshooting & Common Errors**
+## 🛠️ Troubleshooting
 
-### **1️⃣ `407 Proxy Authentication Required`**
+### ❌ `ERR_TUNNEL_CONNECTION_FAILED`
 
-**Cause:** Incorrect Bright Data username or password.  
-👉 **Fix:** Double-check `lum-customer-XXXXX-zone-ZONENAME` in your Bright Data Dashboard.
+- Ensure your **Bright Data credentials are correct**
+- Run a test:
 
----
+```sh
+curl -x http://YOUR_USERNAME:YOUR_PASSWORD@brd.superproxy.io:22225 https://ipinfo.io
+```
 
-### **2️⃣ `No working proxies available`**
+### ❌ `Failed to fetch Shopee data`
 
-**Cause:** Free proxies are failing or Bright Data isn't configured.  
-👉 **Fix:**
-
-- Ensure **Bright Data account is active**.
-- Try **changing port** from `22225` to `80` or `443` or `33335`.
-- **Whitelist your IP** in Bright Data Dashboard.
+- Try using a **different proxy zone** (e.g., `residential_proxy2` instead of `residential_proxy1`).
+- Use **session rotation** by appending `-session-${Math.floor(Math.random() * 10000)}` to your proxy username.
 
 ---
 
-## 🐝 License
+## 🎯 Future Improvements
 
-This project is licensed under the **MIT License**.
+- Implement **automatic proxy switching** if one fails.
+- Add **captcha solving** for tougher restrictions.
+- Support **multiple e-commerce sites** beyond Shopee.
 
 ---
 
-### 📩 **Need Help?**
+## 📞 Contact
 
-If you face any issues, feel free to open an **issue** or contact me!
+For any issues, feel free to open an **Issue** or reach out via [your email or GitHub].
+
+**🚀 Happy Scraping!**

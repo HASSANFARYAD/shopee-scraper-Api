@@ -1,0 +1,140 @@
+# 🛍️ Shopee Scraper API
+
+## 📦 Installation & Setup
+
+### **1️⃣ Clone the Repository**
+
+```sh
+git clone https://github.com/your-username/shopee-scraper.git
+cd shopee-scraper
+```
+
+### **2️⃣ Install Dependencies**
+
+```sh
+npm install
+```
+
+### **3️⃣ Configure Bright Data Proxies**
+
+1. **Sign up at Bright Data** → [https://brightdata.com/](https://brightdata.com/)
+2. **Create a new Proxy Zone** (e.g., Residential Zone).
+3. **Find your access details**:
+   - **Username:** `lum-customer-XXXXXX`
+   - **zone:** `zone-ZONENAME`
+   - **Password:** Your Bright Data password
+
+```js
+const brightDataProxy = {
+  host: "brd.superproxy.io",
+  port: 33335, // Try 80, 443, or 22225 if needed
+  auth: {
+    username: "lum-customer-XXXXXX-zone-ZONENAME",
+    password: "YOUR_PASSWORD",
+  },
+};
+```
+
+### **4️⃣ Run the Server**
+
+```sh
+node index.js
+```
+
+---
+
+## 📌 API Usage
+
+### **1️⃣ Fetch Product Data**
+
+```sh
+GET http://localhost:3005/shopee?storeId=178926468&dealId=21448123549
+```
+
+**Response (Success)**
+
+```json
+{
+  "success": true,
+  "data": {
+    "item": {
+      "item_id": 18904813090,
+      "shop_id": 3543467,
+      "title": "Shopee Product Name",
+      "price": 7500000,
+      "brand": "Brand Name",
+      "shop_location": "Taipei"
+    }
+  }
+}
+```
+
+**Response (Error)**
+
+```json
+{
+  "error": "Failed to retrieve data"
+}
+```
+
+---
+
+### **2️⃣ Check API Health**
+
+```sh
+GET http://localhost:3005/status
+```
+
+**Response**
+
+```json
+{
+  "status": "OK",
+  "uptime": 234.5,
+  "cachedProxies": 5,
+  "timestamp": "2025-03-21T12:45:00Z"
+}
+```
+
+---
+
+## ⚙️ **Configuration Options**
+
+| **Setting**      | **Description**                           |
+| ---------------- | ----------------------------------------- |
+| `PORT`           | API runs on port `3005` (can be changed)  |
+| `CACHE_TIME`     | Product data cached for `5 minutes`       |
+| `PROXY_ROTATION` | Uses **Bright Data** for rotating proxies |
+| `RATE_LIMIT`     | Allows **10 requests per minute**         |
+
+---
+
+## 🔍 **Troubleshooting & Common Errors**
+
+### **1️⃣ `407 Proxy Authentication Required`**
+
+**Cause:** Incorrect Bright Data username or password.  
+👉 **Fix:** Double-check `lum-customer-XXXXX-zone-ZONENAME` in your Bright Data Dashboard.
+
+---
+
+### **2️⃣ `No working proxies available`**
+
+**Cause:** Free proxies are failing or Bright Data isn't configured.  
+👉 **Fix:**
+
+- Ensure **Bright Data account is active**.
+- Try **changing port** from `22225` to `80` or `443` or `33335`.
+- **Whitelist your IP** in Bright Data Dashboard.
+
+---
+
+## 🐝 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+### 📩 **Need Help?**
+
+If you face any issues, feel free to open an **issue** or contact me!

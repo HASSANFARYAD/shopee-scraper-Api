@@ -1,0 +1,17 @@
+[2025-03-22T08:09:05.434Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T08:09:11.190Z] Error fetching Shopee data: All proxy attempts failed.
+[2025-03-22T08:40:33.133Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T08:40:37.647Z] Error fetching Shopee data: All proxy attempts failed.
+[2025-03-22T08:40:50.903Z] Server running on port 3005
+[2025-03-22T08:41:35.365Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T08:42:04.586Z] Error fetching Shopee data: All proxy attempts failed.
+[2025-03-22T09:08:11.583Z] Server running on port 3005
+[2025-03-22T09:09:38.388Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T09:09:38.390Z] Error fetching Shopee data: f is not defined
+[2025-03-22T09:09:58.463Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T09:09:58.463Z] Error fetching Shopee data: f is not defined
+[2025-03-22T09:10:20.573Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T09:10:20.574Z] Error fetching Shopee data: f is not defined
+[2025-03-22T09:14:09.730Z] Server running on port 3005
+[2025-03-22T09:14:16.959Z] Received request: storeId=178926468, dealId=21448123549
+[2025-03-22T09:14:45.792Z] Error fetching Shopee data: All proxy attempts failed.
